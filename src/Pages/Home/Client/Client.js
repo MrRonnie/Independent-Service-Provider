@@ -6,7 +6,7 @@ const Client = ({ client }) => {
   return (
     <div className="g-5 col-sm-12 col-md-6 col-lg-4 mt-3 ">
       <div
-        className="card shadow-lg rounded mt-3 mx-auto"
+        className="client-card shadow-lg rounded mt-3 mx-auto"
         style={{ width: "18rem" }}
       >
         <img src={img} className="card-img-top w-100" alt="..." />

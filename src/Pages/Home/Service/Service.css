@@ -1,4 +1,4 @@
-.service{
+/* .service{
     border: 1px solid rgb(161, 161, 161);
     border-radius: 10px;
     padding-bottom: 10px;
@@ -6,4 +6,14 @@
 }
 .service img {
     border-radius: 10px;
+} */
+.service-card{
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.5s ease-in-out;
+}
+.service-card:hover{
+    transform: scale(1.1);
+    cursor: pointer;
 }
