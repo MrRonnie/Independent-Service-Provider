@@ -6,24 +6,10 @@ import "./Service.css";
 const Service = ({ service }) => {
   const { id, name, img, description, price } = service;
   const navigate = useNavigate();
-  const navigateToServiceDetail = (id) => {
+  const navigateToCheckout = (id) => {
     navigate(`/service/${id}`);
   };
   return (
-    // <div className="service">
-    //   <img className="w-100" src={img} alt="" />
-    //   <h2>{name}</h2>
-    //   <p>Price: {price}</p>
-    //   <p>
-    //     <small>{description}</small>
-    //   </p>
-    //   <button
-    //     onClick={() => navigateToServiceDetail(id)}
-    //     className="btn btn-primary "
-    //   >
-    //     Book: {name}
-    //   </button>
-    // </div>
     <Card className="service-card text-center shadow rounded  mt-3 mx-auto">
       <Card>
         <img className="w-100" src={img} alt="" />
@@ -33,7 +19,7 @@ const Service = ({ service }) => {
           <small>{description}</small>
         </p>
         <Button
-          onClick={() => navigateToServiceDetail(id)}
+          onClick={() => navigateToCheckout(id)}
           className="btn btn-primary w-50 mx-auto mb-3"
         >
           Go somewhere
