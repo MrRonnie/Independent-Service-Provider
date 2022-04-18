@@ -48,7 +48,7 @@ const About = () => {
                 <br />
                 <br />
                 <Badge pill bg="success">
-                  how I will work hard to achieve my goal
+                  I will work hard to achieve my goal
                 </Badge>
                 <br />
                 <Badge pill bg="secondary">

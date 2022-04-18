@@ -3,7 +3,6 @@ import { Carousel } from "react-bootstrap";
 
 import banner1 from "../../../images/banner/banner1.jpg";
 import banner2 from "../../../images/banner/banner2.jpg";
-import banner3 from "../../../images/banner/banner3.jpg";
 
 const Banner = () => {
   const [index, setIndex] = useState(0);
@@ -17,25 +16,20 @@ const Banner = () => {
         <Carousel.Item>
           <img className="d-block w-100" src={banner1} alt="First slide" />
           <Carousel.Caption>
-            <h3>First slide label</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            <h1 className="fs-1 ">Hi! I am Jessica</h1>
+            <p className="fs-5 ">
+              A picture is a reflection of the dreams hidden within Look beyond
+              what you see
+            </p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
           <img className="d-block w-100" src={banner2} alt="Second slide" />
 
           <Carousel.Caption>
-            <h3>Second slide label</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <img className="d-block w-100" src={banner3} alt="Third slide" />
-
-          <Carousel.Caption>
-            <h3>Third slide label</h3>
-            <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+            <h1>Start your Journey</h1>
+            <p className="fs-5 ">
+              Start your Dream, I will help you stand out from the crowd
             </p>
           </Carousel.Caption>
         </Carousel.Item>

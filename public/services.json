@@ -1,23 +1,23 @@
 [
     {
         "id": 1,
-        "name": "ENGINE DIAGNOSTIC",
+        "name": "Package Lite",
         "price": "300",
-        "description": "Lorem ipsum dolor sit amet, consectetu radipisi cing elitBeatae autem aperiam nequ quaera molestias voluptatibus harum ametipsa.",
-        "img": "https://i.ibb.co/dGDkr4v/1.jpg"
+        "description": "For the price, this package is a real bargain. You get the beautiful pic and soft copy. You will love this. Buy and enjoy your moments  Lite but real deal",
+        "img": "https://images.unsplash.com/photo-1650262628155-1bd99ad848c2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
     },
     {
         "id": 2,
-        "name": "WHEEL ALIGNMENT",
-        "price": "100",
-        "description": "Lorem ipsum dolor sit amet, consectetu radipisi cing elitBeatae autem aperiam nequ quaera molestias voluptatibus harum ametipsa.",
-        "img": "https://i.ibb.co/tY8dmnP/2.jpg"
+        "name": "Package Pro",
+        "price": "700",
+        "description": "For the price, this package is a real deal. You get the beautiful pic and soft copy 100 hard copy. You will love this. Buy and enjoy your moments ",
+        "img": "https://images.unsplash.com/photo-1650210923764-ca790a46e632?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
     },
     {
         "id": 3,
-        "name": "OIL CHANGING",
-        "price": "150",
-        "description": "Lorem ipsum dolor sit amet, consectetu radipisi cing elitBeatae autem aperiam nequ quaera molestias voluptatibus harum ametipsa.",
-        "img": "https://i.ibb.co/Yh04YVw/3.jpg"
+        "name": "Package Pro Max",
+        "price": "999",
+        "description": "For the price, this package is the best. You know what pro max mean, You get the ultimate beautiful pic and soft copy. And max sized photos",
+        "img": "https://images.unsplash.com/photo-1650275052161-abaa5fa1296d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
     }
 ]

@@ -22,7 +22,7 @@ const Service = ({ service }) => {
           onClick={() => navigateToCheckout(id)}
           className="btn btn-primary w-50 mx-auto mb-3"
         >
-          Go somewhere
+          Buy Package
         </Button>
       </Card>
     </Card>

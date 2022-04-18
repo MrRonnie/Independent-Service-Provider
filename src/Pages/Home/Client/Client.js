@@ -13,8 +13,9 @@ const Client = ({ client }) => {
         <div className="card-body">
           <h5 className="card-title">{name}</h5>
           <p className="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content <br />
+            I've owned so many great photos and full frame photos both high and
+            low end. This one is my favorite! Jessica just nails the colors{" "}
+            <br />
             <small>
               <span className="text-primary cursor-pointer">See More ...</span>
             </small>
