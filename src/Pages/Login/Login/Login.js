@@ -61,7 +61,7 @@ const Login = () => {
 
   return (
     <div
-      style={{ minHeight: "100vh" }}
+      style={{ minHeight: "80vh" }}
       className="container w-50 mx-auto border mt-5 shadow border-light"
     >
       <h2 className="text-primary text-center mt-3 mb-3">Please Login</h2>
