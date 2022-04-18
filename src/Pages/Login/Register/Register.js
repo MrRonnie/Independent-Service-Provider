@@ -1,74 +1,99 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
-import auth from "../../../firebase.init";
+import {
+  useCreateUserWithEmailAndPassword,
+  useUpdateProfile,
+} from "react-firebase-hooks/auth";
 import "./Register.css";
-import { Button, Form } from "react-bootstrap";
+import auth from "../../../firebase.init";
 import SocialLogin from "../SocialLogin/SocialLogin";
+import { async } from "@firebase/util";
+import Loading from "../../Shared/Loading/Loading";
 
 const Register = () => {
+  const [agree, setAgree] = useState(false);
   const [createUserWithEmailAndPassword, user, loading, error] =
-    useCreateUserWithEmailAndPassword(auth);
+    useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+
+  const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+
   const navigate = useNavigate();
+
+  if (loading || updating) {
+    return <Loading></Loading>;
+  }
 
   const navigateLogin = () => {
     navigate("/login");
   };
 
   if (user) {
-    navigate("/home");
+    console.log("user", user);
   }
 
-  const handleRegister = (event) => {
+  const handleRegister = async (event) => {
     event.preventDefault();
     const name = event.target.name.value;
     const email = event.target.email.value;
     const password = event.target.password.value;
 
-    createUserWithEmailAndPassword(email, password);
+    await createUserWithEmailAndPassword(email, password);
+    await updateProfile({ displayName: name });
+    navigate("/home");
   };
   return (
-    <div style={{ minHeight: "100vh" }} className="container w-50 mx-auto">
-      <h2 className="text-center text-primary mt-5">Please Register</h2>
-      <Form>
-        <Form.Group className="mb-3" controlId="formBasicText">
-          <Form.Control name="text" type="text" placeholder="Your Name" />
-        </Form.Group>
+    <div
+      style={{ minHeight: "80vh" }}
+      className="register-form container w-50 mx-auto border mt-5 shadow border-light"
+    >
+      <h2 className="text-center text-primary mt-3 mb-3">Please Register</h2>
+      <form onSubmit={handleRegister}>
+        <input type="text" name="name" id="" placeholder="Your Name" required />
 
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Control
-            name="email"
-            type="email"
-            placeholder="Enter email"
-            required
-          />
-        </Form.Group>
+        <input
+          type="email"
+          name="email"
+          id=""
+          placeholder="Email Address"
+          required
+        />
 
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Control
-            name="password"
-            type="password"
-            placeholder="Password"
-            required
-          />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="Accept Terms and Conditions" />
-        </Form.Group>
-        <Button
-          variant="primary shadow-lg rounded mb-2 w-50 d-block mx-auto"
-          onClick={handleRegister}
-          type="submit"
+        <input
+          type="password"
+          name="password"
+          id=""
+          placeholder="Password"
+          required
+        />
+
+        <input
+          onClick={() => setAgree(!agree)}
+          type="checkbox"
+          name="terms"
+          id="terms"
+        />
+
+        <label
+          className={`ps-2 ${agree ? "text-primary" : ""}`}
+          htmlFor="terms"
         >
-          Register
-        </Button>
-      </Form>
+          Accept Terms and Conditions
+        </label>
 
-      <p className="mt-2">
+        <input
+          //  by using disable we can make buttons Not clickable if the user not agree with the Terms or what ever condition we give !!
+          disabled={!agree}
+          className="btn btn-primary mt-3 shadow-lg w-50  mx-auto"
+          type="submit"
+          value="Register"
+        />
+      </form>
+
+      <p>
         Already have an account?
         <Link
           to="/login"
-          className="text-Primary text-decoration-none"
+          className="text-primary text-decoration-none"
           onClick={navigateLogin}
         >
           Please Login
