@@ -1,6 +1,10 @@
+import { async } from "@firebase/util";
 import React, { useRef } from "react";
 import { Button, Form } from "react-bootstrap";
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+  useSendPasswordResetEmail,
+  useSignInWithEmailAndPassword,
+} from "react-firebase-hooks/auth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../../firebase.init";
 import SocialLogin from "../SocialLogin/SocialLogin";
@@ -12,9 +16,19 @@ const Login = () => {
   const location = useLocation();
 
   let from = location.state?.from?.pathname || "/";
-
+  let errorElement;
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
+
+  const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
+
+  if (user) {
+    navigate(from, { replace: true });
+  }
+
+  if (error) {
+    errorElement = <p className="text-danger">Error: {error?.message}</p>;
+  }
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -24,20 +38,24 @@ const Login = () => {
     signInWithEmailAndPassword(email, password);
   };
 
-  if (user) {
-    navigate(from, { replace: true });
-  }
-
   const navigateRegister = (event) => {
     navigate("/register");
   };
 
+  const resetPassword = async () => {
+    const email = emailRef.current.value;
+    await sendPasswordResetEmail(email);
+    alert("Sent email");
+  };
+
   return (
-    <div className="container w-50 mx-auto">
-      <h2 className="text-primary text-center mt-2">Please Login</h2>
-      <Form onClick={handleSubmit}>
+    <div
+      style={{ minHeight: "80vh" }}
+      className="container w-50 mx-auto border mt-5 shadow border-light"
+    >
+      <h2 className="text-primary text-center mt-3 mb-3">Please Login</h2>
+      <Form>
         <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
           <Form.Control
             ref={emailRef}
             type="email"
@@ -47,7 +65,6 @@ const Login = () => {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
           <Form.Control
             ref={passwordRef}
             type="password"
@@ -55,13 +72,19 @@ const Login = () => {
             required
           />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="Check me out" />
-        </Form.Group>
-        <Button variant="primary" type="submit">
-          Submit
+
+        <Button
+          className="shadow-lg rounded mb-2 w-50 d-block mx-auto mb-3"
+          variant="primary"
+          onClick={handleSubmit}
+          type="submit"
+        >
+          Login
         </Button>
       </Form>
+
+      {errorElement}
+
       <p className="mt-2">
         Don't have an account?
         <Link
@@ -71,6 +94,15 @@ const Login = () => {
         >
           Please Register
         </Link>
+      </p>
+      <p className="mt-2">
+        Forget Password?
+        <button
+          className="btn btn-link text-primary text-decoration-none"
+          onClick={resetPassword}
+        >
+          Reset Password
+        </button>
       </p>
       <SocialLogin></SocialLogin>
     </div>

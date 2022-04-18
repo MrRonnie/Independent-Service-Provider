@@ -8,13 +8,10 @@ import { useNavigate } from "react-router-dom";
 const SocialLogin = () => {
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
   const navigate = useNavigate();
+
   let errorElement;
   if (error) {
-    errorElement = (
-      <div>
-        <p className="text-danger">Error: {error.message}</p>
-      </div>
-    );
+    errorElement = <p className="text-danger">Error: {error?.message}</p>;
   }
 
   if (user) {

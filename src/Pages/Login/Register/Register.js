@@ -28,9 +28,9 @@ const Register = () => {
     createUserWithEmailAndPassword(email, password);
   };
   return (
-    <div className="container w-50 mx-auto">
+    <div style={{ minHeight: "100vh" }} className="container w-50 mx-auto">
       <h2 className="text-center text-primary mt-5">Please Register</h2>
-      <Form onClick={handleRegister}>
+      <Form>
         <Form.Group className="mb-3" controlId="formBasicText">
           <Form.Control name="text" type="text" placeholder="Your Name" />
         </Form.Group>
@@ -53,10 +53,14 @@ const Register = () => {
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="Check me out" />
+          <Form.Check type="checkbox" label="Accept Terms and Conditions" />
         </Form.Group>
-        <Button variant="primary" type="submit">
-          Submit
+        <Button
+          variant="primary shadow-lg rounded mb-2 w-50 d-block mx-auto"
+          onClick={handleRegister}
+          type="submit"
+        >
+          Register
         </Button>
       </Form>
 
