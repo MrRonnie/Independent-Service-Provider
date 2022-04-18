@@ -3,6 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
 import "./Register.css";
+import { Button, Form } from "react-bootstrap";
+import SocialLogin from "../SocialLogin/SocialLogin";
 
 const Register = () => {
   const [createUserWithEmailAndPassword, user, loading, error] =
@@ -26,31 +28,39 @@ const Register = () => {
     createUserWithEmailAndPassword(email, password);
   };
   return (
-    <div className="register-form">
+    <div className="container w-50 mx-auto">
       <h2 className="text-center text-primary mt-5">Please Register</h2>
-      <form onSubmit={handleRegister}>
-        <input type="text" name="name" id="" placeholder="Your Name" />
+      <Form onClick={handleRegister}>
+        <Form.Group className="mb-3" controlId="formBasicText">
+          <Form.Control name="text" type="text" placeholder="Your Name" />
+        </Form.Group>
 
-        <input
-          type="email"
-          name="email"
-          id=""
-          placeholder="Email Address"
-          required
-        />
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Control
+            name="email"
+            type="email"
+            placeholder="Enter email"
+            required
+          />
+        </Form.Group>
 
-        <input
-          type="password"
-          name="password"
-          id=""
-          placeholder="Password"
-          required
-        />
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Control
+            name="password"
+            type="password"
+            placeholder="Password"
+            required
+          />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicCheckbox">
+          <Form.Check type="checkbox" label="Check me out" />
+        </Form.Group>
+        <Button variant="primary" type="submit">
+          Submit
+        </Button>
+      </Form>
 
-        <input type="submit" value="Register" />
-      </form>
-
-      <p>
+      <p className="mt-2">
         Already have an account?
         <Link
           to="/login"
@@ -60,6 +70,7 @@ const Register = () => {
           Please Login
         </Link>
       </p>
+      <SocialLogin></SocialLogin>
     </div>
   );
 };
