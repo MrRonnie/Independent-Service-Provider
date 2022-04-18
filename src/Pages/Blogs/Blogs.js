@@ -3,7 +3,7 @@ import { Badge, Card } from "react-bootstrap";
 
 const Blogs = () => {
   return (
-    <div>
+    <div className="mt-5">
       <Card className="w-75 mx-auto">
         <Card.Header className="text-dark">
           Question: Difference between authorization and authentication ?
